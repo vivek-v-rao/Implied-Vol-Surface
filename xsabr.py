@@ -52,6 +52,7 @@ def main(argv: list[str]) -> None:
     expiry_range = None
     beta = 1.0
     fit_beta = "--fit-beta" in argv
+    print_per_expiry = False
 
     if "--as-of" in argv:
         as_of = normalize_expiry(argv[argv.index("--as-of") + 1])
@@ -188,10 +189,11 @@ def main(argv: list[str]) -> None:
                 "rmse": params["rmse"],
             }
         )
-        print(
-            f"{exp}: alpha={params['alpha']:.6f} beta={params['beta']:.6f} "
-            f"rho={params['rho']:.6f} nu={params['nu']:.6f} rmse={params['rmse']:.6f}"
-        )
+        if print_per_expiry:
+            print(
+                f"{exp}: alpha={params['alpha']:.6f} beta={params['beta']:.6f} "
+                f"rho={params['rho']:.6f} nu={params['nu']:.6f} rmse={params['rmse']:.6f}"
+            )
 
         strikes_sorted = np.array(sorted(work["strike"].unique()), dtype=float)
         iv_fit = np.array([sabr_iv_hagan(forward, k, t, params["alpha"], params["beta"],
