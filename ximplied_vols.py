@@ -369,6 +369,10 @@ def main(argv):
             df.to_csv(outfile, index=False)
     else:
         df = pd.read_csv(infile)
+        if symbol is None and "contractSymbol" in df.columns:
+            first = df["contractSymbol"].dropna().astype(str).head(1)
+            if not first.empty and len(first.iloc[0]) >= 3:
+                symbol = first.iloc[0][:3]
     if "option_type" in df.columns:
         df["option_type"] = df["option_type"].astype(str).str.lower()
     expiries = df["expiration"].dropna().unique() if "expiration" in df.columns else []

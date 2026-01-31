@@ -93,6 +93,11 @@ def main(argv: list[str]) -> None:
         beta = float(argv[argv.index("--beta") + 1])
 
     df = pd.read_csv(infile)
+    symbol = None
+    if "contractSymbol" in df.columns:
+        first = df["contractSymbol"].dropna().astype(str).head(1)
+        if not first.empty and len(first.iloc[0]) >= 3:
+            symbol = first.iloc[0][:3]
     df["expiration"] = df["expiration"].astype(str).apply(normalize_expiry)
     df["option_type"] = df["option_type"].astype(str).str.lower()
     df["price"] = df.apply(price_from_row, axis=1, args=(True,))
@@ -217,7 +222,8 @@ def main(argv: list[str]) -> None:
         for exp, strikes, iv_pct in plot_data:
             ax.plot(strikes, iv_pct, label=exp)
         title_date = as_of if as_of else datetime.now().date().isoformat()
-        ax.set_title(f"SABR implied vol vs strike by expiry (data, {title_date})")
+        title_sym = symbol if symbol is not None else "data"
+        ax.set_title(f"SABR implied vol vs strike by expiry ({title_sym}, {title_date})")
         ax.set_xlabel("strike")
         ax.set_ylabel("implied vol (pct)")
         ax.legend(fontsize="small", ncol=2)
@@ -281,11 +287,12 @@ def main(argv: list[str]) -> None:
                     normal = (1.0 / (sd * np.sqrt(2.0 * np.pi))) * np.exp(-0.5 * ((ref_x - mu) / sd) ** 2)
                     ax.plot(ref_x, normal, linestyle="--", color="black", label="normal ref")
         title_date = as_of if as_of else datetime.now().date().isoformat()
+        title_sym = symbol if symbol is not None else "data"
         if plot_density_log_s:
-            ax.set_title(f"Implied density vs log stock (SABR, {title_date})")
+            ax.set_title(f"Implied density vs log stock (SABR, {title_sym}, {title_date})")
             ax.set_xlabel("log(stock)")
         else:
-            ax.set_title(f"Implied density vs stock (SABR, {title_date})")
+            ax.set_title(f"Implied density vs stock (SABR, {title_sym}, {title_date})")
             ax.set_xlabel("stock")
         ax.set_ylabel("density (arb units)")
         ax.legend(fontsize="small", ncol=2)
