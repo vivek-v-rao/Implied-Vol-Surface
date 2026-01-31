@@ -155,6 +155,8 @@ python xcev.py options.csv [--expiry YYYY-MM-DD|YYYYMMDD:YYYYMMDD] [--as-of YYYY
     [--outfile out.csv] [--plot [file.png]]
     [--plot-density [file.png]] [--plot-density-log-s [file.png]]
 ```
+Example:
+`python xcev.py spx_all.csv --expiry 20260206 20260220 --fwd-range 0.9:1.1 --plot`
 
 ### `xsummarize_options.py`
 Print a per-expiry summary from an option chain CSV.
@@ -163,8 +165,6 @@ Usage:
 ```
 python xsummarize_options.py options.csv
 ```
-Example:
-`python xcev.py spx_all.csv --expiry 20260206 20260220 --fwd-range 0.9:1.1 --plot`
 
 ### `xsynthetic_svi.py`
 Generate synthetic prices from SVI and optionally fit SVI back, to test the fitting algorithm.
