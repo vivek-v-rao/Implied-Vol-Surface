@@ -23,7 +23,7 @@ python xget_option_prices.py SYMBOL [--expiry YYYYMMDD|YYYYMMDD:YYYYMMDD] [--exp
 Example:
 `python xget_option_prices.py "^SPX"`
 
-downloads the option chain for SPX to `SPX_all.csv` and gives [summary data](results/SPX_option_summary.txt)
+downloads the option chain for SPX to `SPX_all.csv` and gives [summary data](results/SPX_option_summary.txt).
 
 ### `ximplied_vols.py`
 Compute implied vols by expiry from option chain data (CSV or freshly downloaded from Yahoo Finance).
@@ -100,6 +100,9 @@ python xsabr.py options.csv [--expiry YYYY-MM-DD|YYYYMMDD:YYYYMMDD] [--as-of YYY
     [--outfile out.csv] [--plot [file.png]]
     [--plot-density [file.png]] [--plot-density-log-s [file.png]]
 ```
+Example:
+`python xsabr.py spx_all.csv --expiry 20260202 20260206 20260213 20260220 --fwd-range 0.9:1.1`
+creates creates [SABR implied vol curves](plots/spx_sabr.png).
 
 ### `xcev.py`
 Fit CEV smiles per expiry from European option data.
