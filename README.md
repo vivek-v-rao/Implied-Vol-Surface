@@ -5,7 +5,7 @@ Tools to build and visualize implied-volatility smiles and surfaces from option 
 ## Programs
 
 ### `ximplied_vols.py`
-Compute implied vols by expiry from option chain data (CSV or freshly downloaded).
+Compute implied vols by expiry from option chain data (CSV or freshly downloaded from Yahoo Finance).
 
 Key features:
 - Infer forward and discount factor using put-call parity.
@@ -72,6 +72,23 @@ Usage:
 ```
 python xsabr.py options.csv [--expiry YYYY-MM-DD|YYYYMMDD:YYYYMMDD] [--as-of YYYY-MM-DD]
     [--fwd-range L:U] [--both-sides] [--beta B] [--fit-beta]
+    [--outfile out.csv] [--plot [file.png]]
+    [--plot-density [file.png]] [--plot-density-log-s [file.png]]
+```
+
+### `xcev.py`
+Fit CEV smiles per expiry from European option data.
+
+Key features:
+- CEV prices via noncentral chi-square formula.
+- Fits sigma and beta by default (use `--fixed-beta` to hold beta fixed).
+- Plots fitted IV curves and implied densities.
+- Infers symbol from `contractSymbol` in the input file for plot titles (when available).
+
+Usage:
+```
+python xcev.py options.csv [--expiry YYYY-MM-DD|YYYYMMDD:YYYYMMDD] [--as-of YYYY-MM-DD]
+    [--fwd-range L:U] [--both-sides] [--beta B] [--fixed-beta]
     [--outfile out.csv] [--plot [file.png]]
     [--plot-density [file.png]] [--plot-density-log-s [file.png]]
 ```
