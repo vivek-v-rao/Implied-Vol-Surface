@@ -52,6 +52,33 @@ Example:
 `python ximplied_vols.py spx_all.csv --expiry 20260206 20260213 20260220 --fwd-range 0.9:1.1 --plot`
 creates [raw implied vol plots](plots/spx_iv.png) and [tables](results/spx_implied_vols.txt).
 
+### `xbachelier_implied_vols.py`
+Compute implied vols using the Bachelier (normal) model from option chain data.
+
+Key features:
+- Uses normal implied vols (absolute vol units) instead of lognormal.
+- Optional plotting of vol curves and ATM vol vs expiry.
+
+Usage:
+```
+python xbachelier_implied_vols.py options.csv [--expiry YYYY-MM-DD|YYYYMMDD:YYYYMMDD] [--as-of YYYY-MM-DD]
+    [--fwd-range L:U] [--plot [file.png]] [--plot-atm [file.png]] [--both-sides]
+```
+
+### `xcev_implied_vols.py`
+Compute implied CEV sigma for a fixed beta from option chain data.
+
+Key features:
+- Solves for the CEV sigma that matches each option price.
+- Beta controls the diffusion power (beta=1 is lognormal; beta=0 is normal-like).
+- Optional plotting of sigma curves and ATM sigma vs expiry.
+
+Usage:
+```
+python xcev_implied_vols.py options.csv --beta B [--expiry YYYY-MM-DD|YYYYMMDD:YYYYMMDD] [--as-of YYYY-MM-DD]
+    [--fwd-range L:U] [--plot [file.png]] [--plot-atm [file.png]] [--both-sides]
+```
+
 ### `xsvi.py`
 Fit SVI smiles per expiry from European option data.
 
@@ -116,13 +143,14 @@ Fit CEV smiles per expiry from European option data.
 Key features:
 - CEV prices via noncentral chi-square formula.
 - Fits sigma and beta by default (use `--fixed-beta` to hold beta fixed).
+- Optional `--beta-grid` to scan beta values and report RMSE by beta.
 - Plots fitted IV curves and implied densities.
 - Infers symbol from `contractSymbol` in the input file for plot titles (when available).
 
 Usage:
 ```
 python xcev.py options.csv [--expiry YYYY-MM-DD|YYYYMMDD:YYYYMMDD] [--as-of YYYY-MM-DD]
-    [--fwd-range L:U] [--both-sides] [--beta B] [--fixed-beta]
+    [--fwd-range L:U] [--both-sides] [--beta B] [--fixed-beta] [--beta-grid spec]
     [--outfile out.csv] [--plot [file.png]]
     [--plot-density [file.png]] [--plot-density-log-s [file.png]]
 ```
