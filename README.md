@@ -5,7 +5,9 @@ Tools to build and visualize implied-volatility smiles and surfaces from option 
 ## Programs
 
 ### `xget_option_prices.py`
-Download option chain data and save to CSV for use by the other tools.
+Download option chain data and save to CSV for use by the other tools. It is taken from my
+[Yahoo-Option-Prices](https://github.com/vivek-v-rao/Yahoo-Option-Prices) project and 
+documented more extensively there.
 
 Key features:
 - Fetches option chains (per expiry or expiry range).
