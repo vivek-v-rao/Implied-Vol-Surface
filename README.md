@@ -239,10 +239,9 @@ All programs expect a CSV with at least:
 - `expiration` (YYYY-MM-DD)
 - `strike`
 - `option_type` (`call` or `put`)
-- `bid`, `ask`
+- Either `bid`/`ask` or a column containing `price` (case-insensitive, e.g., `lastPrice` or `price`)
 
 Optional:
-- `lastPrice`
 - `volume`, `openInterest`
 
 ## Notes

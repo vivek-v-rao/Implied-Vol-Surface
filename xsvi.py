@@ -86,6 +86,31 @@ def main(argv: list[str]) -> None:
         fwd_range = (float(left), float(right))
 
     df = pd.read_csv(infile)
+    lower_cols = {c.lower(): c for c in df.columns}
+    has_bid = "bid" in lower_cols
+    has_ask = "ask" in lower_cols
+    if has_bid and has_ask:
+        if lower_cols["bid"] != "bid" or lower_cols["ask"] != "ask":
+            df = df.rename(columns={lower_cols["bid"]: "bid", lower_cols["ask"]: "ask"})
+    else:
+        price_cols = [c for c in df.columns if "price" in c.lower()]
+        if not price_cols:
+            missing = []
+            if not has_bid:
+                missing.append("bid")
+            if not has_ask:
+                missing.append("ask")
+            print(f"error: missing columns {', '.join(missing)} and no price column found", file=sys.stderr)
+            sys.exit(1)
+        price_col = None
+        for c in price_cols:
+            if c.lower() in ("lastprice", "price"):
+                price_col = c
+                break
+        if price_col is None:
+            price_col = price_cols[0]
+        if price_col != "lastPrice":
+            df = df.rename(columns={price_col: "lastPrice"})
     symbol = None
     if "contractSymbol" in df.columns:
         first = df["contractSymbol"].dropna().astype(str).head(1)
