@@ -66,6 +66,9 @@ python xsvi.py options.csv [--expiry YYYY-MM-DD|YYYYMMDD:YYYYMMDD] [--as-of YYYY
     [--fwd-range L:U] [--both-sides] [--outfile out.csv]
     [--plot [file.png]] [--plot-density [file.png]] [--plot-density-log-s [file.png]]
 ```
+Example:
+`python xsvi.py spx_all.csv --expiry 20260202 20260206 20260213 20260220 --fwd-range 0.9:1.1 --plot`
+creates [SVI implied vol curves](plots/spx_svi.png).
 
 ### `xssvi.py`
 Fit a surface SVI (SSVI) or eSSVI across expiries from European option data.
@@ -101,8 +104,8 @@ python xsabr.py options.csv [--expiry YYYY-MM-DD|YYYYMMDD:YYYYMMDD] [--as-of YYY
     [--plot-density [file.png]] [--plot-density-log-s [file.png]]
 ```
 Example:
-`python xsabr.py spx_all.csv --expiry 20260202 20260206 20260213 20260220 --fwd-range 0.9:1.1`
-creates creates [SABR implied vol curves](plots/spx_sabr.png).
+`python xsabr.py spx_all.csv --expiry 20260202 20260206 20260213 20260220 --fwd-range 0.9:1.1 --plot`
+creates [SABR implied vol curves](plots/spx_sabr.png).
 
 ### `xcev.py`
 Fit CEV smiles per expiry from European option data.
