@@ -140,6 +140,8 @@ def main(argv: list[str]) -> None:
     if expiry_list is not None:
         expiries = [e for e in expiries if e in set(expiry_list)]
 
+    print_per_expiry = False
+
     for exp in expiries:
         work = df[df["expiration"] == exp].copy()
         if work.empty:
@@ -222,9 +224,10 @@ def main(argv: list[str]) -> None:
                 "rmse": params["rmse"],
             }
         )
-        print(
-            f"{exp}: sigma={params['sigma']:.6f} beta={params['beta']:.6f} rmse={params['rmse']:.6f}"
-        )
+        if print_per_expiry:
+            print(
+                f"{exp}: sigma={params['sigma']:.6f} beta={params['beta']:.6f} rmse={params['rmse']:.6f}"
+            )
 
         strikes_sorted = np.array(sorted(work["strike"].unique()), dtype=float)
         iv_fit = []
