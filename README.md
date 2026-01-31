@@ -1,7 +1,7 @@
 # Implied-Vol-Surface
 
 Tools to build and visualize implied-volatility smiles and surfaces from option chain data.
-The models are defined [here](/models.md).
+The interpolation models are defined [here](/models.md).
 
 ## Programs
 
