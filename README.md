@@ -26,6 +26,20 @@ python ximplied_vols.py --symbol SYMBOL [--expiry YYYYMMDD|YYYYMMDD:YYYYMMDD] [-
     [--fwd-range L:U] [--plot [file.png]] [--plot-atm [file.png]] [--american]
 ```
 
+### `xget_option_prices.py`
+Download option chain data and save to CSV for use by the other tools.
+
+Key features:
+- Fetches option chains (per expiry or expiry range).
+- Saves a combined CSV with calls and puts and summary stats.
+- Optional plot of implied vol vs strike.
+
+Usage:
+```
+python xget_option_prices.py SYMBOL [--expiry YYYYMMDD|YYYYMMDD:YYYYMMDD] [--exp-range N:M]
+    [--plot [file.png]] [--summary] [outfile.csv]
+```
+
 ### `xsvi.py`
 Fit SVI smiles per expiry from European option data.
 
