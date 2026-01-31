@@ -248,7 +248,7 @@ def main(argv: list[str]) -> None:
             ax.plot(strikes, iv_pct, label=exp)
         title_date = as_of if as_of else datetime.now().date().isoformat()
         title_sym = symbol if symbol is not None else "data"
-        ax.set_title(f"SSVI implied vol vs strike by expiry ({title_sym}, {title_date})")
+        ax.set_title(f"SSVI implied vol vs strike by expiry ({title_sym}, expiry {title_date})")
         ax.set_xlabel("strike")
         ax.set_ylabel("implied vol (pct)")
         ax.legend(fontsize="small", ncol=2)
@@ -320,10 +320,10 @@ def main(argv: list[str]) -> None:
         title_sym = symbol if symbol is not None else "data"
         model_name = "eSSVI" if essvi else "SSVI"
         if plot_density_log_s:
-            ax.set_title(f"Implied density vs log stock ({model_name}, {title_sym}, {title_date})")
+            ax.set_title(f"Implied density vs log stock ({model_name}, {title_sym}, expiry {title_date})")
             ax.set_xlabel("log(stock)")
         else:
-            ax.set_title(f"Implied density vs stock ({model_name}, {title_sym}, {title_date})")
+            ax.set_title(f"Implied density vs stock ({model_name}, {title_sym}, expiry {title_date})")
             ax.set_xlabel("stock")
         ax.set_ylabel("density (arb units)")
         ax.legend(fontsize="small", ncol=2)
