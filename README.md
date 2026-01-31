@@ -163,6 +163,8 @@ Usage:
 ```
 python xsummarize_options.py options.csv
 ```
+Example:
+`python xcev.py spx_all.csv --expiry 20260206 20260220 --fwd-range 0.9:1.1 --plot`
 
 ### `xsynthetic_svi.py`
 Generate synthetic prices from SVI and optionally fit SVI back, to test the fitting algorithm.
