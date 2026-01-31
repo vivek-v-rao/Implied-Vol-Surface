@@ -86,7 +86,9 @@ python xssvi.py options.csv [--expiry YYYY-MM-DD|YYYYMMDD:YYYYMMDD] [--as-of YYY
     [--plot [file.png]] [--plot-density [file.png]] [--plot-density-log-s [file.png]]
     [--outfile out.csv]
 ```
-
+Example:
+`python xssvi.py spx_all.csv --expiry 20260202 20260206 20260213 20260220 --fwd-range 0.9:1.1 --plot`
+creates [SSVI implied vol curves](plots/spx_ssvi.png).
 ### `xsabr.py`
 Fit SABR smiles per expiry from European option data.
 
