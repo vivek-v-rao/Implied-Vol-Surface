@@ -47,6 +47,10 @@ python ximplied_vols.py --symbol SYMBOL [--expiry YYYYMMDD|YYYYMMDD:YYYYMMDD] [-
     [--fwd-range L:U] [--plot [file.png]] [--plot-atm [file.png]] [--american]
 ```
 
+Example:
+`python ximplied_vols.py spx_all.csv --expiry 20260206 20260213 20260220 --fwd-range 0.9:1.1 --plot`
+creates [raw implied vol curves](plots/spx_iv.png).
+
 ### `xsvi.py`
 Fit SVI smiles per expiry from European option data.
 
