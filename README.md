@@ -1,6 +1,6 @@
 # Implied-Vol-Surface
 
-Tools to build and visualize implied-volatility smiles and surfaces from option chain CSVs.
+Tools to build and visualize implied-volatility smiles and surfaces from option chain data.
 
 ## Programs
 
