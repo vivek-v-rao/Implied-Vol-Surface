@@ -151,6 +151,10 @@ python xsynthetic_svi.py --outfile out.csv [--fit] [--plot [file.png]]
     [--noise N ...] [--spread S] [--both-sides] [--symbol SYM]
     [--fit-vol | --fit-price]
 ```
+Example:
+```
+python xsynthetic_svi.py --outfile synth.csv --tenor-days 30 --noise 0.10 0.25 --fit --plot
+```
 
 ### `xsynthetic_ssvi.py`
 Generate synthetic prices from SSVI/eSSVI and optionally fit back.
@@ -169,6 +173,10 @@ python xsynthetic_ssvi.py --outfile out.csv [--fit] [--plot [file.png]]
     [--a A] [--b B] [--c C] [--noise N ...] [--spread S] [--both-sides]
     [--fit-vol | --fit-price]
 ```
+Example:
+```
+python xsynthetic_ssvi.py --outfile synth.csv --tenor-days 30 60 --noise 0.0 0.04 --fit --plot
+```
 
 ### `xsynthetic_sabr.py`
 Generate synthetic prices from SABR and optionally fit back.
@@ -186,6 +194,10 @@ python xsynthetic_sabr.py --outfile out.csv [--fit] [--plot [file.png]]
     [--alpha A] [--beta B] [--rho RHO] [--nu NU] [--fit-beta]
     [--noise N ...] [--spread S] [--both-sides]
     [--fit-vol | --fit-price]
+```
+Example:
+```
+python xsynthetic_sabr.py --outfile synth.csv --tenor-days 30 --noise 0.0 0.10 --fit --plot
 ```
 
 
