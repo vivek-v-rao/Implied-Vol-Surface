@@ -134,6 +134,60 @@ Usage:
 python xsummarize_options.py options.csv
 ```
 
+### `xsynthetic_svi.py`
+Generate synthetic prices from SVI and optionally fit SVI back.
+
+Key features:
+- Generates option prices from a known SVI parameterization.
+- Adds absolute price noise (supports multiple noise levels).
+- Optional fit and plot of true vs fitted IVs.
+
+Usage:
+```
+python xsynthetic_svi.py --outfile out.csv [--fit] [--plot [file.png]]
+    [--as-of YYYY-MM-DD] [--expiry YYYYMMDD ... | --tenor-days D ...]
+    [--fwd F] [--df DF] [--rate R] [--fwd-range L:U] [--n-strikes N]
+    [--a A] [--b B] [--rho RHO] [--m M] [--sigma S]
+    [--noise N ...] [--spread S] [--both-sides] [--symbol SYM]
+    [--fit-vol | --fit-price]
+```
+
+### `xsynthetic_ssvi.py`
+Generate synthetic prices from SSVI/eSSVI and optionally fit back.
+
+Key features:
+- Generates option prices from SSVI or eSSVI parameters across tenors.
+- Adds absolute price noise (supports multiple noise levels).
+- Optional fit and plot of true vs fitted IVs.
+
+Usage:
+```
+python xsynthetic_ssvi.py --outfile out.csv [--fit] [--plot [file.png]]
+    [--as-of YYYY-MM-DD] [--expiry YYYYMMDD ... | --tenor-days D ...]
+    [--fwd F] [--df DF] [--rate R] [--fwd-range L:U] [--n-strikes N]
+    [--theta TH] [--rho RHO] [--eta ETA] [--gamma G] [--essvi]
+    [--a A] [--b B] [--c C] [--noise N ...] [--spread S] [--both-sides]
+    [--fit-vol | --fit-price]
+```
+
+### `xsynthetic_sabr.py`
+Generate synthetic prices from SABR and optionally fit back.
+
+Key features:
+- Generates option prices from SABR parameters.
+- Adds absolute price noise (supports multiple noise levels).
+- Optional fit and plot of true vs fitted IVs.
+
+Usage:
+```
+python xsynthetic_sabr.py --outfile out.csv [--fit] [--plot [file.png]]
+    [--as-of YYYY-MM-DD] [--expiry YYYYMMDD ... | --tenor-days D ...]
+    [--fwd F] [--df DF] [--rate R] [--fwd-range L:U] [--n-strikes N]
+    [--alpha A] [--beta B] [--rho RHO] [--nu NU] [--fit-beta]
+    [--noise N ...] [--spread S] [--both-sides]
+    [--fit-vol | --fit-price]
+```
+
 
 ## Input CSV format
 
