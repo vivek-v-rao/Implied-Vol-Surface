@@ -20,6 +20,11 @@ python xget_option_prices.py SYMBOL [--expiry YYYYMMDD|YYYYMMDD:YYYYMMDD] [--exp
     [--plot [file.png]] [--summary] [outfile.csv]
 ```
 
+Example:
+`python xget_option_prices.py "^SPX"`
+
+downloads the option chain for SPX to `SPX_all.csv`
+
 ### `ximplied_vols.py`
 Compute implied vols by expiry from option chain data (CSV or freshly downloaded from Yahoo Finance).
 
