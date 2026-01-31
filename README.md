@@ -165,7 +165,7 @@ python xsummarize_options.py options.csv
 ```
 
 ### `xsynthetic_svi.py`
-Generate synthetic prices from SVI and optionally fit SVI back.
+Generate synthetic prices from SVI and optionally fit SVI back, to test the fitting algorithm.
 
 Key features:
 - Generates option prices from a known SVI parameterization.
@@ -187,7 +187,7 @@ python xsynthetic_svi.py --outfile synth.csv --tenor-days 30 --noise 0.10 0.25 -
 ```
 
 ### `xsynthetic_ssvi.py`
-Generate synthetic prices from SSVI/eSSVI and optionally fit back.
+Generate synthetic prices from SSVI/eSSVI and optionally fit back, to test the fitting algorithm.
 
 Key features:
 - Generates option prices from SSVI or eSSVI parameters across tenors.
@@ -209,7 +209,7 @@ python xsynthetic_ssvi.py --outfile synth.csv --tenor-days 30 60 --noise 0.0 0.0
 ```
 
 ### `xsynthetic_sabr.py`
-Generate synthetic prices from SABR and optionally fit back.
+Generate synthetic prices from SABR and optionally fit back, to test the fitting algorithm.
 
 Key features:
 - Generates option prices from SABR parameters.
